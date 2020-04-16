@@ -5,7 +5,6 @@
  */
 package modeli;
 
-import domen.Polazak;
 import domen.Rezervacija;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -84,6 +83,7 @@ public class ModelTabeleRezervacija extends AbstractTableModel {
 
     public void izbrisiIzTabele(int broj) {
         list.remove(broj);
+        fireTableDataChanged();
     }
 
 }

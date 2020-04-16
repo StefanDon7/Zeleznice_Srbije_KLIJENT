@@ -6,7 +6,6 @@
 package form;
 
 import domen.Klijent;
-import domen.Linija;
 import domen.MedjuStanica;
 import domen.Polazak;
 import domen.Rezervacija;
@@ -15,7 +14,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
-import static java.lang.Thread.sleep;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,12 +24,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import komunikacija.KomunikacijaSaServerom;
-import kons.Konstante;
+import kontroler.Kontroler;
 import modeli.ModelTabelePolasci;
 import modeli.ModelTabeleRezervacija;
-import transfer.KlijentskiZahtev;
-import transfer.ServerskiOdgovor;
+import sat.Sat;
 
 /**
  *
@@ -40,6 +36,7 @@ import transfer.ServerskiOdgovor;
 public class FormaRezervacije extends javax.swing.JFrame {
 
     private Klijent k;
+    Sat s = new Sat();
     SimpleDateFormat smf = new SimpleDateFormat("dd.MM.yyyy");
     ModelTabelePolasci mtp = new ModelTabelePolasci();
     ModelTabeleRezervacija mtr = new ModelTabeleRezervacija();
@@ -55,20 +52,18 @@ public class FormaRezervacije extends javax.swing.JFrame {
         initComponents();
         this.setSize(1560, 564);
         centrirajFrame();
+        postaviVelicinuPanela(1560, 570);
+        panelMojeRezervacije.setVisible(false);
+        panelKlijenta.setVisible(false);
+        srediDaneMeseceGodinu();
         ulepsajTabelu(tablePolasci);
         ulepsajTabelu(tabelMojeRezeravacije);
         srediTabelu();
-        srediDaneMeseceGodinu();
         ucitajStanice();
         ucitajMedjustanice();
-        panelMojeRezervacije.setVisible(false);
-        panelKlijenta.setVisible(false);
-        urediPanelKlijenta();
-        urediPanelRezervacija();
-        urediPanelMojerezervacije();
         pretraziZaDatumPolaske(new Date());
-        sat();
 
+        s.sat(lblSat);
     }
 
     /**
@@ -104,7 +99,7 @@ public class FormaRezervacije extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnSviPolasciDUGME = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnRefreshTabela = new javax.swing.JButton();
         panelMojeRezervacije = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelMojeRezeravacije = new javax.swing.JTable();
@@ -293,14 +288,14 @@ public class FormaRezervacije extends javax.swing.JFrame {
         panelRezervacije.add(jLabel2);
         jLabel2.setBounds(10, 40, 90, 40);
 
-        jButton1.setText("Osvezi tabelu");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRefreshTabela.setText("Osvezi tabelu");
+        btnRefreshTabela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRefreshTabelaActionPerformed(evt);
             }
         });
-        panelRezervacije.add(jButton1);
-        jButton1.setBounds(1090, 80, 120, 32);
+        panelRezervacije.add(btnRefreshTabela);
+        btnRefreshTabela.setBounds(1090, 80, 120, 32);
 
         getContentPane().add(panelRezervacije);
         panelRezervacije.setBounds(0, 0, 1550, 680);
@@ -424,7 +419,7 @@ public class FormaRezervacije extends javax.swing.JFrame {
 
     private void btnPretraziPolaskeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPretraziPolaskeActionPerformed
         DUGME = 1;
-        pretrazi();
+        pretraziPolaskeZaDatum();
     }//GEN-LAST:event_btnPretraziPolaskeActionPerformed
 
     private void cmbGodinaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGodinaItemStateChanged
@@ -436,7 +431,7 @@ public class FormaRezervacije extends javax.swing.JFrame {
     private void cmbMeseciItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbMeseciItemStateChanged
         int index = cmbMeseci.getSelectedIndex();
         int godina = (int) cmbGodina.getSelectedItem();
-        postaviMesecSaDanima(index);
+        postaviDaneZaOdgovarajuciMesec(index);
         postaviZaPrestupnuGodinu(godina);
 
     }//GEN-LAST:event_cmbMeseciItemStateChanged
@@ -447,37 +442,29 @@ public class FormaRezervacije extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Morate obeleziti polazak u tabeli za koji zelite da rezervisete kartu!");
             return;
         }
-        ArrayList<Polazak> list = mtp.vratiListu();
-        Polazak p = list.get(red);
-
-        if (p.getNapomena() != null && (p.getNapomena().contains("OTKAZANO") || p.getNapomena().contains("Otkazano") || p.getNapomena().contains("Otkazan"))) {
-            JOptionPane.showMessageDialog(this, "Polazak je otkazan. Ne mozete ga rezervisati!");
-            return;
-        }
-
-        boolean popunjeno = mtp.popunjeno(p);
-
+        Polazak p = mtp.vratiListu().get(red);
+//        if (p.getNapomena() != null && (p.getNapomena().contains("OTKAZANO") || p.getNapomena().contains("Otkazano") || p.getNapomena().contains("Otkazan"))) {
+//            JOptionPane.showMessageDialog(this, "Polazak je otkazan. Ne mozete ga rezervisati!");
+//            return;
+//        }
+        //ovo moze u validaciji
+//        if (p.getDatumPolaska().before(new Date())) {
+//            JOptionPane.showMessageDialog(this, "Ne mozete rezervisati kartu za polazak koji je vec realizovan!");
+//            return;
+//        }
+//        Rezervacija rez = new Rezervacija(null, p, null);
+//        boolean popunjeno = mtp.popunjeno(rez);
+//        if (!popunjeno) {
+//            pretraziPolaskeZaDatum();
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Popunjena su sva mesta!");
+//        }
         Date d = new Date();
         Rezervacija r = new Rezervacija(k, p, d);
-        if (p.getDatumPolaska().before(new Date())) {
-            JOptionPane.showMessageDialog(this, "Ne mozete rezervisati kartu za polazak koji je vec realizovan!");
-            return;
-        }
-        if (!popunjeno) {
-            KlijentskiZahtev kz = new KlijentskiZahtev();
-            kz.setOperacija(Konstante.REZERVACIJA);
-            kz.setParametar(r);
-            KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
-            ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
-            boolean uspesno = (boolean) so.getOdgovor();
-            if (uspesno) {
-                JOptionPane.showMessageDialog(this, so.getPoruka());
-            } else {
-                JOptionPane.showMessageDialog(this, so.getPoruka());
-            }
-            pretrazi();
-        } else {
-            JOptionPane.showMessageDialog(this, "Popunjena su sva mesta!");
+        try {
+            Kontroler.getInstance().rezervisiPolazak(r);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.toString());
         }
 
     }//GEN-LAST:event_btnRezervisiActionPerformed
@@ -486,22 +473,7 @@ public class FormaRezervacije extends javax.swing.JFrame {
         panelKlijenta.setVisible(false);
         panelRezervacije.setVisible(false);
         panelMojeRezervacije.setVisible(true);
-        KlijentskiZahtev kz = new KlijentskiZahtev();
-        kz.setOperacija(Konstante.VRATI_REZERVACIJE);
-        kz.setParametar(k);
-        KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
-        ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
-        ArrayList<Rezervacija> lista = (ArrayList<Rezervacija>) so.getOdgovor();
-        if (BROJ_PRIKAZA == 0) {
-            if (lista.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Vasa lista rezervacija je prazna!");
-            }
-            BROJ_PRIKAZA++;
-        }
-        this.setListaRezervacija(lista);
-        mtr.setList(lista);
-        tabelMojeRezeravacije.setModel(mtr);
-
+        ucitajMojeRezervacije();
     }//GEN-LAST:event_btnMojeRezervacijeActionPerformed
 
     private void btnRezervacijaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRezervacijaActionPerformed
@@ -532,20 +504,16 @@ public class FormaRezervacije extends javax.swing.JFrame {
             return;
         }
         Klijent klijent = new Klijent(k.getKlijentID(), korisnickoIme, lozinka, ime, prezime, email);
-        System.out.println(k.getKlijentID());
-        KlijentskiZahtev kz = new KlijentskiZahtev();
-        kz.setOperacija(Konstante.PROMENA_NALOGA);
-        kz.setParametar(klijent);
-        KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
-        ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
-        boolean uspesno = (boolean) so.getOdgovor();
-        JOptionPane.showMessageDialog(this, so.getPoruka());
-        if (uspesno) {
+        try {
+            Kontroler.getInstance().IzmeniNalog(klijent);
             k = klijent;
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.toString());
+            return;
+        } finally {
+            txtPassword.setText("");
+            txtPasswordPotvrda.setText("");
         }
-        txtPassword.setText("");
-        txtPasswordPotvrda.setText("");
-
     }//GEN-LAST:event_btnPromeniActionPerformed
 
     private void btnKlijentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKlijentActionPerformed
@@ -608,34 +576,18 @@ public class FormaRezervacije extends javax.swing.JFrame {
         }
         Rezervacija r = mtr.getList().get(broj);
         Date danasnji = new Date();
-//        GregorianCalendar gc = new GregorianCalendar();
-//////        int godina = gc.get(GregorianCalendar.YEAR);
-//////        int mesec = gc.get(GregorianCalendar.MONTH);
-//////        int dan = gc.get(GregorianCalendar.DAY_OF_MONTH);
-//////        int sati = gc.get(GregorianCalendar.HOUR_OF_DAY);
-//////        int minuti = gc.get(GregorianCalendar.MINUTE);
-//////        Calendar pocetniDatum = new GregorianCalendar(godina, mesec, dan, sati - 1, minuti);
-////        Date pocetni = pocetniDatum.getTime();
 
+        //Ovo bi trebalo da ide u validaciju
         if (danasnji.after(r.getPolazak().getDatumPolaska())) {
             JOptionPane.showMessageDialog(this, "Polazak je vec realizovan!", "NEUSPESNO OTKAZIVANJE KARTE!", 1);
             return;
         }
-
-        KlijentskiZahtev kz = new KlijentskiZahtev();
-        kz.setOperacija(Konstante.OTKAZI_REZERVACIJU);
-        kz.setParametar(FRAMEBITS);
-
-        kz.setParametar(r);
-        KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
-        ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
-        boolean uspesno = (boolean) so.getOdgovor();
-        if (uspesno) {
+        try {
+            Kontroler.getInstance().otkaziRezervaciju(r);
             JOptionPane.showMessageDialog(this, "Uspesno ste otkazali rezervaciju!");
             mtr.izbrisiIzTabele(broj);
-            mtr.fireTableDataChanged();
-        } else {
-            JOptionPane.showMessageDialog(this, "Neuspesno otkazivanje rezervacije!");
+        } catch (Exception ex) {
+            Logger.getLogger(FormaRezervacije.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnOtkaziRezervacijuActionPerformed
 
@@ -646,31 +598,33 @@ public class FormaRezervacije extends javax.swing.JFrame {
             return;
         }
         Polazak p = mtp.getList().get(broj);
-        ArrayList<MedjuStanica> listaMedju = new ArrayList<>();
-
-        for (MedjuStanica medjustanica : listaMedjustanica) {
-            if (p.getLinija().getLinijaID() == medjustanica.getLinija().getLinijaID()) {
-                listaMedju.add(medjustanica);
-            }
+        MedjuStanica m = new MedjuStanica(null, p.getLinija(), 0);
+        ArrayList<MedjuStanica> listaMedjustanica;
+        try {
+            listaMedjustanica = Kontroler.getInstance().vratiMiMedjustaniceLiniju(m);
+            JOptionPane.showMessageDialog(this, ispisiListu(listaMedjustanica), "LISTA MEDJUSTANICA", 1);
+        } catch (Exception ex) {
+            Logger.getLogger(FormaRezervacije.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        JOptionPane.showMessageDialog(this, ispisiListu(listaMedju), "LISTA MEDJUSTANICA", 1);
-
     }//GEN-LAST:event_cmbViseOPolaskuActionPerformed
 
     private void btnSviPolasciDUGMEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSviPolasciDUGMEActionPerformed
         DUGME = 0;
-        pretraziZaDatumPolaske(new Date());
+        try {
+            pretraziZaDatumPolaske(new Date());
+        } catch (Exception ex) {
+            Logger.getLogger(FormaRezervacije.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_btnSviPolasciDUGMEActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRefreshTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshTabelaActionPerformed
         if (DUGME == 0) {
             pretraziZaDatumPolaske(new Date());
         } else {
-            pretrazi();
+            pretraziPolaskeZaDatum();
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnRefreshTabelaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -686,16 +640,24 @@ public class FormaRezervacije extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormaRezervacije.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormaRezervacije.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormaRezervacije.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormaRezervacije.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormaRezervacije.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormaRezervacije.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormaRezervacije.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormaRezervacije.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -715,6 +677,7 @@ public class FormaRezervacije extends javax.swing.JFrame {
     private javax.swing.JButton btnPretraziPolaske;
     private javax.swing.JButton btnPromeni;
     private javax.swing.JButton btnRealizovaneRezervacije;
+    private javax.swing.JButton btnRefreshTabela;
     private javax.swing.JButton btnRezervacija;
     private javax.swing.JButton btnRezervisi;
     private javax.swing.JButton btnSviPolasciDUGME;
@@ -725,7 +688,6 @@ public class FormaRezervacije extends javax.swing.JFrame {
     private javax.swing.JComboBox cmbMeseci;
     private javax.swing.JComboBox cmbPocetnaStanica;
     private javax.swing.JButton cmbViseOPolasku;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -756,6 +718,14 @@ public class FormaRezervacije extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrezime;
     // End of variables declaration//GEN-END:variables
 
+    public Klijent getK() {
+        return k;
+    }
+
+    public void setK(Klijent k) {
+        this.k = k;
+    }
+
     private void centrirajFrame() {
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
@@ -772,16 +742,16 @@ public class FormaRezervacije extends javax.swing.JFrame {
         for (int i = godina; i < godina + 10; i++) {
             cmbGodina.addItem(i);
         }
-        postaviMesecSaDanima(dan);
+        postaviDaneZaOdgovarajuciMesec(dan);
         postaviZaPrestupnuGodinu(godina);
-        postaviMesecSaDanima(mesec);
+        postaviDaneZaOdgovarajuciMesec(mesec);
         cmbGodina.setSelectedItem(godina);
         cmbMeseci.setSelectedIndex(mesec);
         cmbDani.setSelectedItem(dan);
 
     }
 
-    private void postaviMesecSaDanima(int index) {
+    private void postaviDaneZaOdgovarajuciMesec(int index) {
         if (index == 0 || index == 2 || index == 4 || index == 6 || index == 7 || index == 9 || index == 11) {
             cmbDani.removeAllItems();
             for (int i = 1; i <= 31; i++) {
@@ -816,41 +786,28 @@ public class FormaRezervacije extends javax.swing.JFrame {
         cmbPocetnaStanica.removeAllItems();
         cmbKrajnjaStanica.removeAllItems();
 
-        KlijentskiZahtev kz = new KlijentskiZahtev();
-        kz.setOperacija(Konstante.VRATI_STANICE);
-
-        KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
-        ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
-        ArrayList<Stanica> listaStanica = (ArrayList<Stanica>) so.getOdgovor();
+        ArrayList<Stanica> listaStanica = new ArrayList<>();
+        try {
+            listaStanica = Kontroler.getInstance().vratiMiSveStanice();
+        } catch (Exception ex) {
+            Logger.getLogger(FormaRezervacije.class.getName()).log(Level.SEVERE, null, ex);
+        }
         for (Stanica stanica : listaStanica) {
             cmbPocetnaStanica.addItem(stanica);
             cmbKrajnjaStanica.addItem(stanica);
         }
+
     }
 
     private void srediTabelu() {
         tablePolasci.setModel(mtp);
     }
 
-    public Klijent getK() {
-        return k;
-    }
-
-    public void setK(Klijent k) {
-        this.k = k;
-    }
-
-    public void urediPanelKlijenta() {
-        panelKlijenta.setSize(1250, 570);
-    }
-
-    private void urediPanelRezervacija() {
-        panelKlijenta.setSize(1250, 570);
-
-    }
-
-    private void urediPanelMojerezervacije() {
-        panelKlijenta.setSize(1250, 570);
+    //ovde je nesto pobrljavio
+    public void postaviVelicinuPanela(int x, int y) {
+        panelKlijenta.setSize(x, y);
+        panelMojeRezervacije.setSize(x, y);
+        panelRezervacije.setSize(x, y);
     }
 
     public ArrayList<Rezervacija> getListaRezervacija() {
@@ -863,24 +820,15 @@ public class FormaRezervacije extends javax.swing.JFrame {
 
     private void ucitajMedjustanice() {
         listaMedjustanica = new ArrayList<>();
-        KlijentskiZahtev kz = new KlijentskiZahtev();
-        kz.setOperacija(Konstante.VRATI_MEDJUSTANICE);
-        KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
-        ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
-        listaMedjustanica = (ArrayList<MedjuStanica>) so.getOdgovor();
-        if (listaMedjustanica.isEmpty()) {
-            System.out.println("PRAZNOOO");
-        } else {
-            System.out.println("NIJE PRAZNO");
-        }
-        for (MedjuStanica medjuStanica : listaMedjustanica) {
-            System.out.println(medjuStanica.getLinija() + " " + medjuStanica.getRedniBroj() + " " + medjuStanica.getStanica());
+        try {
+            listaMedjustanica = Kontroler.getInstance().vratiMiSveMedjustanica();
+        } catch (Exception ex) {
+            Logger.getLogger(FormaRezervacije.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     private boolean pocentaJeMedjustanica(Polazak polazak, Stanica pocetna, Stanica krajnja) {
         boolean postoji = false;
-        ucitajMedjustanice();
         if (polazak.getLinija().getStanicaKrajnja().equals(krajnja)) {
             for (MedjuStanica medjuStanica : listaMedjustanica) {
                 if (medjuStanica.getStanica().equals(pocetna) && polazak.getLinija().getLinijaID() == medjuStanica.getLinija().getLinijaID()) {
@@ -891,9 +839,8 @@ public class FormaRezervacije extends javax.swing.JFrame {
         return postoji;
     }
 
-    private boolean krajnjaJeMedjustniica(Polazak polazak, Stanica krajnja, Stanica pocetna) {
+    private boolean krajnjaJeMedjustnica(Polazak polazak, Stanica krajnja, Stanica pocetna) {
         boolean postoji = false;
-        ucitajMedjustanice();
         if (polazak.getLinija().getStanicaPocetna().equals(pocetna)) {
             for (MedjuStanica medjuStanica : listaMedjustanica) {
                 if (medjuStanica.getStanica().equals(krajnja) && polazak.getLinija().getLinijaID() == medjuStanica.getLinija().getLinijaID()) {
@@ -910,7 +857,6 @@ public class FormaRezervacije extends javax.swing.JFrame {
         boolean postojiK = false;
         MedjuStanica m1 = new MedjuStanica();
         MedjuStanica m2 = new MedjuStanica();
-        ucitajMedjustanice();
         for (MedjuStanica medjuStanica : listaMedjustanica) {
             if (medjuStanica.getStanica().equals(pocetna) && polazak.getLinija().getLinijaID() == medjuStanica.getLinija().getLinijaID()) {
                 postojiP = true;
@@ -943,10 +889,10 @@ public class FormaRezervacije extends javax.swing.JFrame {
         return listaString;
     }
 
-    public void pretrazi() {
+    public void pretraziPolaskeZaDatum() {
         DUGME = 1;
-        int godina = (int) cmbGodina.getSelectedItem();
         //u kalendaru meseci idu od 0 a u util datu idu od 1
+        int godina = (int) cmbGodina.getSelectedItem();
         int mesec = cmbMeseci.getSelectedIndex() + 1;
         int dan = (int) cmbDani.getSelectedItem();
         Stanica pocetna = (Stanica) cmbPocetnaStanica.getSelectedItem();
@@ -956,19 +902,22 @@ public class FormaRezervacije extends javax.swing.JFrame {
         try {
             date = smf.parse(datum);
         } catch (ParseException ex) {
+            Logger.getLogger(FormaRezervacije.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        Polazak p = new Polazak(-1, "", date, null, null, null);
+
+        ArrayList<Polazak> listPolazaka = new ArrayList<>();
+        try {
+            listPolazaka = Kontroler.getInstance().vratiMiPolaskeZaDatum(p);
+        } catch (Exception ex) {
             Logger.getLogger(FormaRezervacije.class.getName()).log(Level.SEVERE, null, ex);
         }
-        KlijentskiZahtev kz = new KlijentskiZahtev();
-        kz.setOperacija(Konstante.VRATI_POLASKE);
-        kz.setParametar(date);
-        KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
-        ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
-        ArrayList<Polazak> listPolazaka = (ArrayList<Polazak>) so.getOdgovor();
         ArrayList<Polazak> listaZaTabelu = new ArrayList<>();
 
         for (Polazak polazak : listPolazaka) {
             boolean pocentaJeMedjustanica = pocentaJeMedjustanica(polazak, pocetna, krajnja);
-            boolean krajnjaJeMedjustniica = krajnjaJeMedjustniica(polazak, krajnja, pocetna);
+            boolean krajnjaJeMedjustniica = krajnjaJeMedjustnica(polazak, krajnja, pocetna);
             boolean pocetnaIKrajnjaSuMedjustanice = pocetnaIKrajnjaSuMedjustanice(polazak, krajnja, pocetna);
             if ((((polazak.getLinija().getStanicaPocetna().equals(pocetna) || pocentaJeMedjustanica) && (polazak.getLinija().getStanicaKrajnja().equals(krajnja) || krajnjaJeMedjustniica)) || pocetnaIKrajnjaSuMedjustanice)) {
                 listaZaTabelu.add(polazak);
@@ -987,13 +936,13 @@ public class FormaRezervacije extends javax.swing.JFrame {
     }
 
     private void pretraziZaDatumPolaske(Date date) {
-        KlijentskiZahtev kz = new KlijentskiZahtev();
-        kz.setOperacija(Konstante.VRATI_POLASKE);
-        kz.setParametar(date);
-        KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
-        ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
-        ArrayList<Polazak> listPolazaka = (ArrayList<Polazak>) so.getOdgovor();
-
+        Polazak p = new Polazak(-1, "", date, null, null, null);
+        ArrayList<Polazak> listPolazaka = new ArrayList<>();
+        try {
+            listPolazaka = Kontroler.getInstance().vratiMiPolaskeZaDatum(p);
+        } catch (Exception ex) {
+            Logger.getLogger(FormaRezervacije.class.getName()).log(Level.SEVERE, null, ex);
+        }
         if (listPolazaka.isEmpty()) {
             lblNazivTabele.setText("Nema polazaka za datum: " + smf.format(date));
             return;
@@ -1005,35 +954,7 @@ public class FormaRezervacije extends javax.swing.JFrame {
         tablePolasci.setModel(mtp);
     }
 
-    public void sat() {
-        Thread sat = new Thread() {
-            public void run() {
-                try {
-                    while (true) {
-                        Calendar gc = new GregorianCalendar();
-                        int godina = gc.get(Calendar.YEAR);
-                        int mesec = gc.get(Calendar.MONTH) + 1;
-                        int dan = gc.get(Calendar.DAY_OF_MONTH);
-                        int sekunde = gc.get(Calendar.SECOND);
-                        int minuti = gc.get(Calendar.MINUTE);
-                        int sati = gc.get(Calendar.HOUR_OF_DAY);
-                        if (minuti / 10 == 0) {
-                            lblSat.setText("Datum: " + dan + "/" + mesec + "/" + godina + "     Vreme: " + sati + ":0" + minuti + ":" + sekunde);
-                        } else {
-                            lblSat.setText("Datum: " + dan + "/" + mesec + "/" + godina + "     Vreme: " + sati + ":" + minuti + ":" + sekunde);
-                        }
-                        sleep(1000);
-                    }
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(FormaRezervacije.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        };
-        sat.start();
-    }
-
     public void ulepsajTabelu(JTable tabela) {
-
         tabela.setRowHeight(25);
         tabela.setFocusable(false);
         tabela.setShowVerticalLines(false);
@@ -1043,5 +964,23 @@ public class FormaRezervacije extends javax.swing.JFrame {
         tabela.getTableHeader().setBackground(new Color(32, 136, 203));
         tabela.getTableHeader().setForeground(new Color(255, 255, 255));
         tabela.setRowHeight(25);
+    }
+
+    private void ucitajMojeRezervacije() {
+        ArrayList<Rezervacija> listaRezervacija = new ArrayList<>();
+        try {
+            listaRezervacija = Kontroler.getInstance().vratiMojeRezervacije(new Rezervacija(k, null, null));
+        } catch (Exception ex) {
+            Logger.getLogger(FormaRezervacije.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (BROJ_PRIKAZA == 0) {
+            if (listaRezervacija.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Vasa lista rezervacija je prazna!");
+            }
+            BROJ_PRIKAZA++;
+        }
+        this.setListaRezervacija(listaRezervacija);
+        mtr.setList(listaRezervacija);
+        tabelMojeRezeravacije.setModel(mtr);
     }
 }

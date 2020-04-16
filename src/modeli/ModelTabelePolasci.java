@@ -7,16 +7,9 @@ package modeli;
 
 import domen.Polazak;
 import domen.Rezervacija;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
-import komunikacija.KomunikacijaSaServerom;
-import transfer.KlijentskiZahtev;
-import transfer.ServerskiOdgovor;
 
 /**
  *
@@ -45,6 +38,7 @@ public class ModelTabelePolasci extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Polazak p = list.get(rowIndex);
+        Rezervacija r = new Rezervacija(null, p, null);
         switch (columnIndex) {
             case 0:
                 return p.getLinija().getNaziv();
@@ -71,7 +65,7 @@ public class ModelTabelePolasci extends AbstractTableModel {
             case 6:
                 return p.getLinija().getTipLinije().getNaziv();
             case 7:
-                return vratiBroj(p) + "/" + p.getVoz().getBrojSedista();
+                return vratiBroj(r) + "/" + p.getVoz().getBrojSedista();
             case 8:
                 return p.getNapomena();
             default:
@@ -115,25 +109,17 @@ public class ModelTabelePolasci extends AbstractTableModel {
         return list;
     }
 
-    public int vratiBroj(Polazak p) {
+    public int vratiBroj(Rezervacija r) {
         int broj = 0;
-        KlijentskiZahtev kz = new KlijentskiZahtev();
-        kz.setOperacija(kons.Konstante.VRATI_REZERVACIJE_ZA_POLAZAK);
-        kz.setParametar(p);
-        KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
-        ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
-        broj = (int) so.getOdgovor();
-        return broj;
+        try {
+            return kontroler.Kontroler.getInstance().vratiBrojRezervacija(r);
+        } catch (Exception ex) {
+            return broj;
+        }
     }
 
-    public boolean popunjeno(Polazak p) {
-        KlijentskiZahtev kz = new KlijentskiZahtev();
-        kz.setParametar(p);
-        kz.setOperacija(kons.Konstante.VRATI_REZERVACIJE_ZA_POLAZAK);
-        KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
-        ServerskiOdgovor so = komunikacija.KomunikacijaSaServerom.getInstance().primiOdgovor();
-        int broj = (int) so.getOdgovor();
-        if (p.getVoz().getBrojSedista() == broj) {
+    public boolean popunjeno(Rezervacija r) {
+        if (vratiBroj(r) == r.getPolazak().getVoz().getBrojSedista()) {
             return true;
         }
         return false;

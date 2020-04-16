@@ -6,17 +6,11 @@
 package form;
 
 import domen.Klijent;
-
 import java.awt.Color;
 import java.awt.Dimension;
-
 import java.awt.Toolkit;
-
 import javax.swing.JOptionPane;
-import komunikacija.KomunikacijaSaServerom;
-import kons.Konstante;
-import transfer.KlijentskiZahtev;
-import transfer.ServerskiOdgovor;
+import kontroler.Kontroler;
 
 /**
  *
@@ -255,28 +249,20 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         String email = txtEmailLogin.getText();
         String lozinka = new String(txtPasswordLogin.getPassword());
         Klijent k = new Klijent(-1, "korisnickoIme", lozinka, "ime", "prezime", email);
-        if (email.isEmpty() || lozinka.isEmpty()) {
-            return;
-        }
-        KlijentskiZahtev kz = new KlijentskiZahtev();
-        kz.setParametar(k);
-        kz.setOperacija(Konstante.PRIJAVLJIVANJE);
-        KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
-        ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
-
-        Klijent klijent = (Klijent) so.getOdgovor();
-        JOptionPane.showMessageDialog(this, so.getPoruka());
-        if (klijent != null) {
+//        if (email.isEmpty() || lozinka.isEmpty()) {
+//            return;
+//        }
+        Klijent klijent;
+        try {
+            klijent = kontroler.Kontroler.getInstance().UlogujSe(k);
             JOptionPane.showMessageDialog(this, "Korisnik: " + klijent.getIme() + " " + klijent.getPrezime() + ".\nUspesno ste se prijavili!");
             FormaRezervacije fr = new FormaRezervacije();
             fr.setK(klijent);
             fr.setVisible(true);
             this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Neuspesno prijavljivanje!");
-            return;
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.toString());
         }
-
     }//GEN-LAST:event_btnPrijaviSeActionPerformed
 
     private void btnRegistrujSeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrujSeActionPerformed
@@ -288,37 +274,28 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         String ime = txtIme.getText();
         String prezime = txtPrezime.getText();
         String email = txtEmail.getText();
-        if (korisnickoIme.isEmpty() || lozinka.isEmpty() || ime.isEmpty() || prezime.isEmpty() || email.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Sva polja moraju biti popunjena!");
-            return;
-        }
+//        if (korisnickoIme.isEmpty() || lozinka.isEmpty() || ime.isEmpty() || prezime.isEmpty() || email.isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Sva polja moraju biti popunjena!");
+//            return;
+//        }
         if (!lozinka.equals(lozinka2)) {
             JOptionPane.showMessageDialog(this, "Potvrda lozinke neuspesna");
             return;
         }
-
         Klijent klijent = new Klijent(-1, korisnickoIme, lozinka, ime, prezime, email);
-        KlijentskiZahtev kz = new KlijentskiZahtev();
-        kz.setOperacija(Konstante.REGISTRACIJA);
-        kz.setParametar(klijent);
-        KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
-        ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
-        boolean uspesno = (boolean) so.getOdgovor();
-        if (uspesno) {
-            JOptionPane.showMessageDialog(this, so.getPoruka());
+        try {
+            Kontroler.getInstance().RegistrujSe(klijent);
+            btnLoginActionPerformed(evt);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.toString());
+        } finally {
             txtIme.setText("");
             txtPrezime.setText("");
             txtEmail.setText("");
             txtKorisnickoIme.setText("");
             txtPassword.setText("");
             txtPasswordPotvrda.setText("");
-            btnLoginActionPerformed(evt);
-            return;
-        } else {
-            JOptionPane.showMessageDialog(this, so.getPoruka());
-            return;
         }
-
     }//GEN-LAST:event_btnRegistrujSeActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
