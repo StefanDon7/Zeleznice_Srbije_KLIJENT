@@ -25,15 +25,15 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import kontroler.Kontroler;
-import modeli.ModelTabelePolasci;
-import modeli.ModelTabeleRezervacija;
+import modeli.tabela.ModelTabelePolasci;
+import modeli.tabela.ModelTabeleRezervacija;
 import sat.Sat;
 
 /**
  *
  * @author sleza
  */
-public class FormaRezervacije extends javax.swing.JFrame {
+public final class FormaRezervacije extends javax.swing.JFrame {
 
     private Klijent k;
     Sat s = new Sat();
@@ -96,7 +96,6 @@ public class FormaRezervacije extends javax.swing.JFrame {
         lblNazivTabele = new javax.swing.JLabel();
         btnRezervisi = new javax.swing.JButton();
         cmbViseOPolasku = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         btnSviPolasciDUGME = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnRefreshTabela = new javax.swing.JButton();
@@ -126,6 +125,7 @@ public class FormaRezervacije extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
+        btnRezervacija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_ticket_purchase_32px.png"))); // NOI18N
         btnRezervacija.setText("Rezervacija");
         btnRezervacija.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +135,7 @@ public class FormaRezervacije extends javax.swing.JFrame {
         getContentPane().add(btnRezervacija);
         btnRezervacija.setBounds(0, 0, 140, 40);
 
+        btnKlijent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_user_male_30px.png"))); // NOI18N
         btnKlijent.setText("Nalog");
         btnKlijent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,6 +145,7 @@ public class FormaRezervacije extends javax.swing.JFrame {
         getContentPane().add(btnKlijent);
         btnKlijent.setBounds(130, 0, 160, 40);
 
+        btnMojeRezervacije.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_filing_cabinet_32px.png"))); // NOI18N
         btnMojeRezervacije.setText("Moje rezervacije");
         btnMojeRezervacije.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,6 +164,7 @@ public class FormaRezervacije extends javax.swing.JFrame {
         getContentPane().add(lblSat);
         lblSat.setBounds(921, 0, 440, 40);
 
+        btnOdjaviSe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_logout_rounded_down_32px.png"))); // NOI18N
         btnOdjaviSe.setText("Odjavi se");
         btnOdjaviSe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,15 +174,18 @@ public class FormaRezervacije extends javax.swing.JFrame {
         getContentPane().add(btnOdjaviSe);
         btnOdjaviSe.setBounds(1380, 0, 160, 40);
 
+        panelRezervacije.setBackground(new java.awt.Color(34, 40, 44));
         panelRezervacije.setLayout(null);
 
-        jLabel3.setText("DO:");
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_marker_32px.png"))); // NOI18N
+        jLabel3.setText("Do:");
         panelRezervacije.add(jLabel3);
-        jLabel3.setBounds(40, 210, 30, 20);
+        jLabel3.setBounds(10, 200, 60, 30);
 
-        jLabel4.setText("OD:");
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_marker_32px.png"))); // NOI18N
+        jLabel4.setText("Od:");
         panelRezervacije.add(jLabel4);
-        jLabel4.setBounds(40, 150, 30, 20);
+        jLabel4.setBounds(10, 150, 60, 30);
         panelRezervacije.add(cmbPocetnaStanica);
         cmbPocetnaStanica.setBounds(80, 150, 300, 26);
 
@@ -189,10 +195,12 @@ public class FormaRezervacije extends javax.swing.JFrame {
         panelRezervacije.add(cmbKrajnjaStanica);
         cmbKrajnjaStanica.setBounds(80, 210, 300, 26);
 
-        jLabel5.setText("DATUM:");
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_schedule_32px.png"))); // NOI18N
+        jLabel5.setText("Datum");
         panelRezervacije.add(jLabel5);
-        jLabel5.setBounds(10, 250, 50, 20);
+        jLabel5.setBounds(20, 250, 60, 30);
 
+        btnPretraziPolaske.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_search_32px.png"))); // NOI18N
         btnPretraziPolaske.setText("PRETRAZI POLASKE");
         btnPretraziPolaske.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,7 +208,7 @@ public class FormaRezervacije extends javax.swing.JFrame {
             }
         });
         panelRezervacije.add(btnPretraziPolaske);
-        btnPretraziPolaske.setBounds(10, 290, 370, 32);
+        btnPretraziPolaske.setBounds(10, 290, 370, 40);
 
         cmbGodina.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbGodina.setSelectedIndex(-1);
@@ -261,33 +269,34 @@ public class FormaRezervacije extends javax.swing.JFrame {
         panelRezervacije.add(btnRezervisi);
         btnRezervisi.setBounds(400, 420, 1140, 32);
 
-        cmbViseOPolasku.setText("?");
+        cmbViseOPolasku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_information_32px.png"))); // NOI18N
+        cmbViseOPolasku.setText("Vise informacija");
+        cmbViseOPolasku.setToolTipText("");
         cmbViseOPolasku.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbViseOPolaskuActionPerformed(evt);
             }
         });
         panelRezervacije.add(cmbViseOPolasku);
-        cmbViseOPolasku.setBounds(1490, 80, 50, 32);
+        cmbViseOPolasku.setBounds(1380, 80, 160, 40);
 
-        jLabel1.setText("Vise o polasku");
-        panelRezervacije.add(jLabel1);
-        jLabel1.setBounds(1400, 80, 90, 30);
-
-        btnSviPolasciDUGME.setText("SVI DANASNJI POLASCI");
+        btnSviPolasciDUGME.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_schedule_32px.png"))); // NOI18N
+        btnSviPolasciDUGME.setText("Danasnji polasci");
         btnSviPolasciDUGME.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSviPolasciDUGMEActionPerformed(evt);
             }
         });
         panelRezervacije.add(btnSviPolasciDUGME);
-        btnSviPolasciDUGME.setBounds(1220, 80, 170, 30);
+        btnSviPolasciDUGME.setBounds(1200, 80, 170, 40);
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_search_32px.png"))); // NOI18N
         jLabel2.setText("Pretraga:");
         panelRezervacije.add(jLabel2);
-        jLabel2.setBounds(10, 40, 90, 40);
+        jLabel2.setBounds(10, 40, 130, 40);
 
+        btnRefreshTabela.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_refresh_32px_1.png"))); // NOI18N
         btnRefreshTabela.setText("Osvezi tabelu");
         btnRefreshTabela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -295,11 +304,12 @@ public class FormaRezervacije extends javax.swing.JFrame {
             }
         });
         panelRezervacije.add(btnRefreshTabela);
-        btnRefreshTabela.setBounds(1090, 80, 120, 32);
+        btnRefreshTabela.setBounds(1040, 80, 150, 40);
 
         getContentPane().add(panelRezervacije);
-        panelRezervacije.setBounds(0, 0, 1550, 680);
+        panelRezervacije.setBounds(0, 0, 1560, 570);
 
+        panelMojeRezervacije.setBackground(new java.awt.Color(34, 40, 44));
         panelMojeRezervacije.setMinimumSize(new java.awt.Dimension(1250, 570));
         panelMojeRezervacije.setPreferredSize(new java.awt.Dimension(1250, 570));
         panelMojeRezervacije.setRequestFocusEnabled(false);
@@ -362,8 +372,9 @@ public class FormaRezervacije extends javax.swing.JFrame {
         btnOtkaziRezervaciju.setBounds(1230, 390, 310, 32);
 
         getContentPane().add(panelMojeRezervacije);
-        panelMojeRezervacije.setBounds(0, 0, 1550, 680);
+        panelMojeRezervacije.setBounds(0, 0, 1560, 570);
 
+        panelKlijenta.setBackground(new java.awt.Color(34, 40, 44));
         panelKlijenta.setLayout(null);
 
         lblEmailRegistracija.setText("Email:");
@@ -412,7 +423,7 @@ public class FormaRezervacije extends javax.swing.JFrame {
         btnPromeni.setBounds(280, 342, 218, 32);
 
         getContentPane().add(panelKlijenta);
-        panelKlijenta.setBounds(0, 0, 1550, 820);
+        panelKlijenta.setBounds(0, 0, 1560, 570);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -425,7 +436,6 @@ public class FormaRezervacije extends javax.swing.JFrame {
     private void cmbGodinaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGodinaItemStateChanged
         int godina = (int) cmbGodina.getSelectedItem();
         postaviZaPrestupnuGodinu(godina);
-
     }//GEN-LAST:event_cmbGodinaItemStateChanged
 
     private void cmbMeseciItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbMeseciItemStateChanged
@@ -433,7 +443,6 @@ public class FormaRezervacije extends javax.swing.JFrame {
         int godina = (int) cmbGodina.getSelectedItem();
         postaviDaneZaOdgovarajuciMesec(index);
         postaviZaPrestupnuGodinu(godina);
-
     }//GEN-LAST:event_cmbMeseciItemStateChanged
 
     private void btnRezervisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRezervisiActionPerformed
@@ -463,6 +472,8 @@ public class FormaRezervacije extends javax.swing.JFrame {
         Rezervacija r = new Rezervacija(k, p, d);
         try {
             Kontroler.getInstance().rezervisiPolazak(r);
+            JOptionPane.showMessageDialog(this, "Uspesno ste rezervisali kartu za polazak:" + r.getPolazak().getNaziv());
+            btnRefreshTabelaActionPerformed(evt);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.toString());
         }
@@ -688,7 +699,6 @@ public class FormaRezervacije extends javax.swing.JFrame {
     private javax.swing.JComboBox cmbMeseci;
     private javax.swing.JComboBox cmbPocetnaStanica;
     private javax.swing.JButton cmbViseOPolasku;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -803,7 +813,6 @@ public class FormaRezervacije extends javax.swing.JFrame {
         tablePolasci.setModel(mtp);
     }
 
-    //ovde je nesto pobrljavio
     public void postaviVelicinuPanela(int x, int y) {
         panelKlijenta.setSize(x, y);
         panelMojeRezervacije.setSize(x, y);

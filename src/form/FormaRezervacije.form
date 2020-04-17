@@ -28,6 +28,9 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnRezervacija">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/slike/icons8_ticket_purchase_32px.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Rezervacija"/>
       </Properties>
       <Events>
@@ -41,6 +44,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnKlijent">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/slike/icons8_user_male_30px.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Nalog"/>
       </Properties>
       <Events>
@@ -57,6 +63,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnMojeRezervacije">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/slike/icons8_filing_cabinet_32px.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Moje rezervacije"/>
       </Properties>
       <Events>
@@ -95,6 +104,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnOdjaviSe">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/slike/icons8_logout_rounded_down_32px.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Odjavi se"/>
       </Properties>
       <Events>
@@ -107,9 +119,14 @@
       </Constraints>
     </Component>
     <Container class="javax.swing.JPanel" name="panelRezervacije">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="2c" green="28" red="22" type="rgb"/>
+        </Property>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="0" width="1550" height="680"/>
+          <AbsoluteConstraints x="0" y="0" width="1560" height="570"/>
         </Constraint>
       </Constraints>
 
@@ -119,21 +136,27 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="DO:"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/slike/icons8_marker_32px.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Do:"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="40" y="210" width="30" height="20"/>
+              <AbsoluteConstraints x="10" y="200" width="60" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="OD:"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/slike/icons8_marker_32px.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Od:"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="40" y="150" width="30" height="20"/>
+              <AbsoluteConstraints x="10" y="150" width="60" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -168,16 +191,22 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="DATUM:"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/slike/icons8_schedule_32px.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Datum"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="250" width="50" height="20"/>
+              <AbsoluteConstraints x="20" y="250" width="60" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JButton" name="btnPretraziPolaske">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/slike/icons8_search_32px.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="PRETRAZI POLASKE"/>
           </Properties>
           <Events>
@@ -185,7 +214,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="290" width="370" height="-1"/>
+              <AbsoluteConstraints x="10" y="290" width="370" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -333,37 +362,34 @@
         </Component>
         <Component class="javax.swing.JButton" name="cmbViseOPolasku">
           <Properties>
-            <Property name="text" type="java.lang.String" value="?"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/slike/icons8_information_32px.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Vise informacija"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbViseOPolaskuActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="1490" y="80" width="50" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Vise o polasku"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="1400" y="80" width="90" height="30"/>
+              <AbsoluteConstraints x="1380" y="80" width="160" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JButton" name="btnSviPolasciDUGME">
           <Properties>
-            <Property name="text" type="java.lang.String" value="SVI DANASNJI POLASCI"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/slike/icons8_schedule_32px.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Danasnji polasci"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSviPolasciDUGMEActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="1220" y="80" width="170" height="30"/>
+              <AbsoluteConstraints x="1200" y="80" width="170" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -372,16 +398,22 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="18" style="1"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/slike/icons8_search_32px.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Pretraga:"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="40" width="90" height="40"/>
+              <AbsoluteConstraints x="10" y="40" width="130" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JButton" name="btnRefreshTabela">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/slike/icons8_refresh_32px_1.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Osvezi tabelu"/>
           </Properties>
           <Events>
@@ -389,7 +421,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="1090" y="80" width="120" height="-1"/>
+              <AbsoluteConstraints x="1040" y="80" width="150" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -397,6 +429,9 @@
     </Container>
     <Container class="javax.swing.JPanel" name="panelMojeRezervacije">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="2c" green="28" red="22" type="rgb"/>
+        </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[1250, 570]"/>
         </Property>
@@ -407,7 +442,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="0" width="1550" height="680"/>
+          <AbsoluteConstraints x="0" y="0" width="1560" height="570"/>
         </Constraint>
       </Constraints>
 
@@ -539,9 +574,14 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="panelKlijenta">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="2c" green="28" red="22" type="rgb"/>
+        </Property>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="0" width="1550" height="820"/>
+          <AbsoluteConstraints x="0" y="0" width="1560" height="570"/>
         </Constraint>
       </Constraints>
 

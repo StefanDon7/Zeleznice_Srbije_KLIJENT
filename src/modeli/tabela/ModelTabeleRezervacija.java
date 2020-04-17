@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modeli;
+package modeli.tabela;
 
 import domen.Rezervacija;
 import java.text.SimpleDateFormat;

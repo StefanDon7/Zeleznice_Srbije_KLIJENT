@@ -6,7 +6,6 @@
 package form;
 
 import domen.Klijent;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -24,8 +23,6 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
     public FormaLoginRegistracija() {
         initComponents();
         this.setSize(1200, 600);
-        btnLogin.setBackground(Color.LIGHT_GRAY);
-        btnRegistration.setBackground(Color.lightGray);
         centrirajFrejm();
         panelLogin.setVisible(true);
         panelRegistracije.setVisible(false);
@@ -47,7 +44,6 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         lblLoznikaLogin = new javax.swing.JLabel();
         txtPasswordLogin = new javax.swing.JPasswordField();
         btnPrijaviSe = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         panelRegistracije = new javax.swing.JPanel();
         lblEmailRegistracija = new javax.swing.JLabel();
         lblImeRegistracija = new javax.swing.JLabel();
@@ -62,23 +58,24 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         txtPassword = new javax.swing.JPasswordField();
         txtPasswordPotvrda = new javax.swing.JPasswordField();
         btnRegistrujSe = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
         btnRegistration = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        panelLevi = new javax.swing.JPanel();
+        panelDesni = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Prijavi se / Registruj se");
+        setTitle("Log in / Sing in");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(1200, 600));
         setPreferredSize(new java.awt.Dimension(1000, 550));
         setResizable(false);
         getContentPane().setLayout(null);
 
+        panelLogin.setBackground(new java.awt.Color(34, 40, 44));
         panelLogin.setLayout(null);
 
         lblEmailLogin.setBackground(new java.awt.Color(102, 102, 102));
-        lblEmailLogin.setForeground(new java.awt.Color(0, 0, 0));
+        lblEmailLogin.setForeground(new java.awt.Color(255, 255, 255));
         lblEmailLogin.setText("Email:");
         panelLogin.add(lblEmailLogin);
         lblEmailLogin.setBounds(30, 30, 140, 30);
@@ -89,7 +86,7 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         txtEmailLogin.setBounds(190, 30, 220, 30);
 
         lblLoznikaLogin.setBackground(new java.awt.Color(102, 102, 102));
-        lblLoznikaLogin.setForeground(new java.awt.Color(0, 0, 0));
+        lblLoznikaLogin.setForeground(new java.awt.Color(255, 255, 255));
         lblLoznikaLogin.setText("Lozinka:");
         panelLogin.add(lblLoznikaLogin);
         lblLoznikaLogin.setBounds(30, 70, 140, 30);
@@ -100,8 +97,9 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         txtPasswordLogin.setBounds(190, 70, 220, 30);
 
         btnPrijaviSe.setBackground(new java.awt.Color(102, 102, 102));
-        btnPrijaviSe.setForeground(new java.awt.Color(0, 0, 0));
-        btnPrijaviSe.setText("Prijavi se");
+        btnPrijaviSe.setForeground(new java.awt.Color(255, 255, 255));
+        btnPrijaviSe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_user_32px_1.png"))); // NOI18N
+        btnPrijaviSe.setText("Log in");
         btnPrijaviSe.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnPrijaviSe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,48 +109,44 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         panelLogin.add(btnPrijaviSe);
         btnPrijaviSe.setBounds(190, 110, 218, 30);
 
-        jLabel5.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pozadine/Catawba-Solid-Color-Background-Wallpaper-5120x2880.png"))); // NOI18N
-        panelLogin.add(jLabel5);
-        jLabel5.setBounds(0, 0, 420, 350);
-
         getContentPane().add(panelLogin);
-        panelLogin.setBounds(270, 90, 420, 350);
+        panelLogin.setBounds(270, 90, 420, 160);
 
+        panelRegistracije.setBackground(new java.awt.Color(34, 40, 44));
         panelRegistracije.setLayout(null);
 
         lblEmailRegistracija.setBackground(new java.awt.Color(102, 102, 102));
-        lblEmailRegistracija.setForeground(new java.awt.Color(0, 0, 0));
+        lblEmailRegistracija.setForeground(new java.awt.Color(255, 255, 255));
         lblEmailRegistracija.setText("Email:");
         panelRegistracije.add(lblEmailRegistracija);
         lblEmailRegistracija.setBounds(30, 30, 140, 30);
 
         lblImeRegistracija.setBackground(new java.awt.Color(102, 102, 102));
-        lblImeRegistracija.setForeground(new java.awt.Color(0, 0, 0));
+        lblImeRegistracija.setForeground(new java.awt.Color(255, 255, 255));
         lblImeRegistracija.setText("Ime:");
         panelRegistracije.add(lblImeRegistracija);
         lblImeRegistracija.setBounds(30, 70, 140, 30);
 
         lblPrezimeRegistracija.setBackground(new java.awt.Color(102, 102, 102));
-        lblPrezimeRegistracija.setForeground(new java.awt.Color(0, 0, 0));
+        lblPrezimeRegistracija.setForeground(new java.awt.Color(255, 255, 255));
         lblPrezimeRegistracija.setText("Prezime:");
         panelRegistracije.add(lblPrezimeRegistracija);
         lblPrezimeRegistracija.setBounds(30, 110, 140, 30);
 
         lblKorisnickoImeRegistracija.setBackground(new java.awt.Color(102, 102, 102));
-        lblKorisnickoImeRegistracija.setForeground(new java.awt.Color(0, 0, 0));
+        lblKorisnickoImeRegistracija.setForeground(new java.awt.Color(255, 255, 255));
         lblKorisnickoImeRegistracija.setText("Korisnicko ime:");
         panelRegistracije.add(lblKorisnickoImeRegistracija);
         lblKorisnickoImeRegistracija.setBounds(30, 150, 140, 30);
 
         lblLozinakRegistracija.setBackground(new java.awt.Color(102, 102, 102));
-        lblLozinakRegistracija.setForeground(new java.awt.Color(0, 0, 0));
+        lblLozinakRegistracija.setForeground(new java.awt.Color(255, 255, 255));
         lblLozinakRegistracija.setText("Lozinka:");
         panelRegistracije.add(lblLozinakRegistracija);
         lblLozinakRegistracija.setBounds(30, 190, 140, 30);
 
         lblPotvrdaLozinkeRegistracija.setBackground(new java.awt.Color(102, 102, 102));
-        lblPotvrdaLozinkeRegistracija.setForeground(new java.awt.Color(0, 0, 0));
+        lblPotvrdaLozinkeRegistracija.setForeground(new java.awt.Color(255, 255, 255));
         lblPotvrdaLozinkeRegistracija.setText("Potvrda loznike:");
         panelRegistracije.add(lblPotvrdaLozinkeRegistracija);
         lblPotvrdaLozinkeRegistracija.setBounds(30, 230, 140, 30);
@@ -193,7 +187,8 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         txtPasswordPotvrda.setBounds(190, 230, 218, 30);
 
         btnRegistrujSe.setBackground(new java.awt.Color(102, 102, 102));
-        btnRegistrujSe.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegistrujSe.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrujSe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_add_user_male_32px.png"))); // NOI18N
         btnRegistrujSe.setText("Registruj se");
         btnRegistrujSe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,18 +196,15 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
             }
         });
         panelRegistracije.add(btnRegistrujSe);
-        btnRegistrujSe.setBounds(190, 270, 218, 32);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pozadine/Dark-Byzantium-Solid-Color-Background-Wallpaper-5120x2880.png"))); // NOI18N
-        panelRegistracije.add(jLabel4);
-        jLabel4.setBounds(0, -120, 420, 730);
+        btnRegistrujSe.setBounds(190, 270, 218, 48);
 
         getContentPane().add(panelRegistracije);
         panelRegistracije.setBounds(270, 90, 420, 350);
 
         btnLogin.setBackground(new java.awt.Color(102, 102, 102));
-        btnLogin.setForeground(new java.awt.Color(0, 0, 0));
-        btnLogin.setText("Prijavi se");
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_user_male_30px.png"))); // NOI18N
+        btnLogin.setText("Log in");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
@@ -222,8 +214,9 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         btnLogin.setBounds(420, 10, 130, 60);
 
         btnRegistration.setBackground(new java.awt.Color(102, 102, 102));
-        btnRegistration.setForeground(new java.awt.Color(0, 0, 0));
-        btnRegistration.setText("Registruj se");
+        btnRegistration.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistration.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_add_user_male_30px.png"))); // NOI18N
+        btnRegistration.setText("Sing in");
         btnRegistration.setToolTipText("");
         btnRegistration.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,14 +226,14 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         getContentPane().add(btnRegistration);
         btnRegistration.setBounds(540, 10, 150, 60);
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pozadine/Battleship-Grey-Solid-Color-Background-Wallpaper-5120x2880.png"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 500, 600);
+        panelLevi.setBackground(new java.awt.Color(21, 25, 28));
+        getContentPane().add(panelLevi);
+        panelLevi.setBounds(0, 0, 1200, 600);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pozadine/Champagne-Solid-Color-Background-Wallpaper-5120x2880.png"))); // NOI18N
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(500, 0, 700, 600);
+        panelDesni.setBackground(new java.awt.Color(34, 40, 44));
+        getContentPane().add(panelDesni);
+        panelDesni.setBounds(500, 0, 700, 600);
+        panelDesni.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -249,52 +242,52 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         String email = txtEmailLogin.getText();
         String lozinka = new String(txtPasswordLogin.getPassword());
         Klijent k = new Klijent(-1, "korisnickoIme", lozinka, "ime", "prezime", email);
-//        if (email.isEmpty() || lozinka.isEmpty()) {
-//            return;
-//        }
+        //mozda ne bih treba da smaram server sa upitom o tome da li je sve popunio al nema veze stoji i na serverskoj strani
+        if (email.isEmpty() || lozinka.isEmpty()) {
+            return;
+        }
         Klijent klijent;
         try {
             klijent = kontroler.Kontroler.getInstance().UlogujSe(k);
             JOptionPane.showMessageDialog(this, "Korisnik: " + klijent.getIme() + " " + klijent.getPrezime() + ".\nUspesno ste se prijavili!");
-            FormaRezervacije fr = new FormaRezervacije();
-            fr.setK(klijent);
-            fr.setVisible(true);
-            this.setVisible(false);
+            prikaziGlavnuFormu(klijent);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.toString());
         }
     }//GEN-LAST:event_btnPrijaviSeActionPerformed
 
     private void btnRegistrujSeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrujSeActionPerformed
-        String korisnickoIme = txtKorisnickoIme.getText();
         char[] niz = txtPassword.getPassword();
         String lozinka = String.copyValueOf(niz);
         char[] niz2 = txtPasswordPotvrda.getPassword();
         String lozinka2 = String.copyValueOf(niz2);
+        if (!lozinka.equals(lozinka2)) {
+            JOptionPane.showMessageDialog(this, "Potvrda lozinke neuspesna");
+            txtPassword.setText("");
+            txtPasswordPotvrda.setText("");
+            return;
+        }
+        String korisnickoIme = txtKorisnickoIme.getText();
         String ime = txtIme.getText();
         String prezime = txtPrezime.getText();
         String email = txtEmail.getText();
-//        if (korisnickoIme.isEmpty() || lozinka.isEmpty() || ime.isEmpty() || prezime.isEmpty() || email.isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "Sva polja moraju biti popunjena!");
-//            return;
-//        }
-        if (!lozinka.equals(lozinka2)) {
-            JOptionPane.showMessageDialog(this, "Potvrda lozinke neuspesna");
+        //mozda ne bih treba da smaram server sa upitom o tome da li je sve popunio al nema veze stoji i na serverskoj strani
+        if (korisnickoIme.isEmpty() || lozinka.isEmpty() || ime.isEmpty() || prezime.isEmpty() || email.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Sva polja moraju biti popunjena!");
             return;
         }
+
         Klijent klijent = new Klijent(-1, korisnickoIme, lozinka, ime, prezime, email);
         try {
             Kontroler.getInstance().RegistrujSe(klijent);
             btnLoginActionPerformed(evt);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.toString());
-        } finally {
             txtIme.setText("");
             txtPrezime.setText("");
             txtEmail.setText("");
             txtKorisnickoIme.setText("");
-            txtPassword.setText("");
-            txtPasswordPotvrda.setText("");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.toString());
+            txtEmail.setText("");
         }
     }//GEN-LAST:event_btnRegistrujSeActionPerformed
 
@@ -352,10 +345,6 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
     private javax.swing.JButton btnPrijaviSe;
     private javax.swing.JButton btnRegistration;
     private javax.swing.JButton btnRegistrujSe;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lblEmailLogin;
     private javax.swing.JLabel lblEmailRegistracija;
     private javax.swing.JLabel lblImeRegistracija;
@@ -364,6 +353,8 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
     private javax.swing.JLabel lblLoznikaLogin;
     private javax.swing.JLabel lblPotvrdaLozinkeRegistracija;
     private javax.swing.JLabel lblPrezimeRegistracija;
+    private javax.swing.JPanel panelDesni;
+    private javax.swing.JPanel panelLevi;
     private javax.swing.JPanel panelLogin;
     private javax.swing.JPanel panelRegistracije;
     private javax.swing.JTextField txtEmail;
@@ -380,5 +371,12 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
+    }
+
+    private void prikaziGlavnuFormu(Klijent klijent) {
+        FormaRezervacije fr = new FormaRezervacije();
+        fr.setK(klijent);
+        fr.setVisible(true);
+        this.setVisible(false);
     }
 }
