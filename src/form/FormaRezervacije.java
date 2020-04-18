@@ -11,6 +11,7 @@ import domen.Polazak;
 import domen.Rezervacija;
 import domen.Stanica;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
@@ -22,8 +23,11 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import kontroler.Kontroler;
 import modeli.tabela.ModelTabelePolasci;
 import modeli.tabela.ModelTabeleRezervacija;
@@ -122,10 +126,11 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         btnPromeni = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
         getContentPane().setLayout(null);
 
-        btnRezervacija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_ticket_purchase_32px.png"))); // NOI18N
+        btnRezervacija.setBackground(new java.awt.Color(34, 40, 44));
+        btnRezervacija.setForeground(java.awt.Color.white);
+        btnRezervacija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_ticket_purchase_32px.png"))); // NOI18N
         btnRezervacija.setText("Rezervacija");
         btnRezervacija.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,7 +140,9 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         getContentPane().add(btnRezervacija);
         btnRezervacija.setBounds(0, 0, 140, 40);
 
-        btnKlijent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_user_male_30px.png"))); // NOI18N
+        btnKlijent.setBackground(new java.awt.Color(34, 40, 44));
+        btnKlijent.setForeground(java.awt.Color.white);
+        btnKlijent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_user_male_30px.png"))); // NOI18N
         btnKlijent.setText("Nalog");
         btnKlijent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,7 +152,9 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         getContentPane().add(btnKlijent);
         btnKlijent.setBounds(130, 0, 160, 40);
 
-        btnMojeRezervacije.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_filing_cabinet_32px.png"))); // NOI18N
+        btnMojeRezervacije.setBackground(new java.awt.Color(34, 40, 44));
+        btnMojeRezervacije.setForeground(java.awt.Color.white);
+        btnMojeRezervacije.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_filing_cabinet_32px.png"))); // NOI18N
         btnMojeRezervacije.setText("Moje rezervacije");
         btnMojeRezervacije.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,17 +162,23 @@ public final class FormaRezervacije extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnMojeRezervacije);
-        btnMojeRezervacije.setBounds(280, 0, 160, 40);
+        btnMojeRezervacije.setBounds(280, 0, 200, 40);
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator1.setForeground(java.awt.Color.white);
         jSeparator1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(0, 40, 1540, 20);
 
+        lblSat.setBackground(new java.awt.Color(34, 40, 44));
+        lblSat.setForeground(java.awt.Color.white);
         lblSat.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblSat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_schedule_32px.png"))); // NOI18N
         getContentPane().add(lblSat);
         lblSat.setBounds(921, 0, 440, 40);
 
+        btnOdjaviSe.setBackground(new java.awt.Color(34, 40, 44));
+        btnOdjaviSe.setForeground(java.awt.Color.white);
         btnOdjaviSe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_logout_rounded_down_32px.png"))); // NOI18N
         btnOdjaviSe.setText("Odjavi se");
         btnOdjaviSe.addActionListener(new java.awt.event.ActionListener() {
@@ -174,33 +189,47 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         getContentPane().add(btnOdjaviSe);
         btnOdjaviSe.setBounds(1380, 0, 160, 40);
 
-        panelRezervacije.setBackground(new java.awt.Color(34, 40, 44));
+        panelRezervacije.setBackground(new java.awt.Color(44, 44, 44));
+        panelRezervacije.setForeground(new java.awt.Color(255, 255, 255));
         panelRezervacije.setLayout(null);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_marker_32px.png"))); // NOI18N
+        jLabel3.setBackground(new java.awt.Color(34, 40, 44));
+        jLabel3.setForeground(java.awt.Color.white);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_marker_32px.png"))); // NOI18N
         jLabel3.setText("Do:");
         panelRezervacije.add(jLabel3);
         jLabel3.setBounds(10, 200, 60, 30);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_marker_32px.png"))); // NOI18N
+        jLabel4.setBackground(new java.awt.Color(34, 40, 44));
+        jLabel4.setForeground(java.awt.Color.white);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_marker_32px.png"))); // NOI18N
         jLabel4.setText("Od:");
         panelRezervacije.add(jLabel4);
         jLabel4.setBounds(10, 150, 60, 30);
+
+        cmbPocetnaStanica.setBackground(new java.awt.Color(34, 40, 44));
+        cmbPocetnaStanica.setForeground(java.awt.Color.white);
         panelRezervacije.add(cmbPocetnaStanica);
         cmbPocetnaStanica.setBounds(80, 150, 300, 26);
 
+        cmbKrajnjaStanica.setBackground(new java.awt.Color(34, 40, 44));
+        cmbKrajnjaStanica.setForeground(java.awt.Color.white);
         cmbKrajnjaStanica.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
         cmbKrajnjaStanica.setSelectedIndex(-1);
         cmbKrajnjaStanica.setToolTipText("");
         panelRezervacije.add(cmbKrajnjaStanica);
         cmbKrajnjaStanica.setBounds(80, 210, 300, 26);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_schedule_32px.png"))); // NOI18N
+        jLabel5.setBackground(new java.awt.Color(34, 40, 44));
+        jLabel5.setForeground(java.awt.Color.white);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_schedule_32px.png"))); // NOI18N
         jLabel5.setText("Datum");
         panelRezervacije.add(jLabel5);
-        jLabel5.setBounds(20, 250, 60, 30);
+        jLabel5.setBounds(0, 250, 80, 30);
 
-        btnPretraziPolaske.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_search_32px.png"))); // NOI18N
+        btnPretraziPolaske.setBackground(new java.awt.Color(34, 40, 44));
+        btnPretraziPolaske.setForeground(java.awt.Color.white);
+        btnPretraziPolaske.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_search_32px.png"))); // NOI18N
         btnPretraziPolaske.setText("PRETRAZI POLASKE");
         btnPretraziPolaske.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,6 +239,8 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         panelRezervacije.add(btnPretraziPolaske);
         btnPretraziPolaske.setBounds(10, 290, 370, 40);
 
+        cmbGodina.setBackground(new java.awt.Color(34, 40, 44));
+        cmbGodina.setForeground(java.awt.Color.white);
         cmbGodina.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbGodina.setSelectedIndex(-1);
         cmbGodina.addItemListener(new java.awt.event.ItemListener() {
@@ -220,6 +251,8 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         panelRezervacije.add(cmbGodina);
         cmbGodina.setBounds(300, 250, 80, 26);
 
+        cmbMeseci.setBackground(new java.awt.Color(34, 40, 44));
+        cmbMeseci.setForeground(java.awt.Color.white);
         cmbMeseci.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Januar", "Februar", "Mart", "April", "Maj", "Jun", "Jul", "Avgust", "Septembar", "Oktobar", "Novembar", "Decembar" }));
         cmbMeseci.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -229,6 +262,8 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         panelRezervacije.add(cmbMeseci);
         cmbMeseci.setBounds(170, 250, 120, 26);
 
+        cmbDani.setBackground(new java.awt.Color(34, 40, 44));
+        cmbDani.setForeground(java.awt.Color.white);
         cmbDani.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbDani.setSelectedIndex(-1);
         panelRezervacije.add(cmbDani);
@@ -237,6 +272,8 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        tablePolasci.setBackground(new java.awt.Color(44, 44, 44));
+        tablePolasci.setForeground(new java.awt.Color(255, 255, 255));
         tablePolasci.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -256,10 +293,15 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         panelRezervacije.add(jScrollPane2);
         jScrollPane2.setBounds(400, 130, 1140, 280);
 
+        lblNazivTabele.setBackground(new java.awt.Color(34, 40, 44));
         lblNazivTabele.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblNazivTabele.setForeground(java.awt.Color.white);
         panelRezervacije.add(lblNazivTabele);
-        lblNazivTabele.setBounds(100, 40, 1130, 40);
+        lblNazivTabele.setBounds(140, 40, 1090, 40);
 
+        btnRezervisi.setBackground(new java.awt.Color(34, 40, 44));
+        btnRezervisi.setForeground(java.awt.Color.white);
+        btnRezervisi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_reservation_32px.png"))); // NOI18N
         btnRezervisi.setText("REZERVISI POLAZAK");
         btnRezervisi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,9 +309,11 @@ public final class FormaRezervacije extends javax.swing.JFrame {
             }
         });
         panelRezervacije.add(btnRezervisi);
-        btnRezervisi.setBounds(400, 420, 1140, 32);
+        btnRezervisi.setBounds(400, 420, 1140, 48);
 
-        cmbViseOPolasku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_information_32px.png"))); // NOI18N
+        cmbViseOPolasku.setBackground(new java.awt.Color(34, 40, 44));
+        cmbViseOPolasku.setForeground(java.awt.Color.white);
+        cmbViseOPolasku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_information_32px.png"))); // NOI18N
         cmbViseOPolasku.setText("Vise informacija");
         cmbViseOPolasku.setToolTipText("");
         cmbViseOPolasku.addActionListener(new java.awt.event.ActionListener() {
@@ -280,6 +324,8 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         panelRezervacije.add(cmbViseOPolasku);
         cmbViseOPolasku.setBounds(1380, 80, 160, 40);
 
+        btnSviPolasciDUGME.setBackground(new java.awt.Color(34, 40, 44));
+        btnSviPolasciDUGME.setForeground(java.awt.Color.white);
         btnSviPolasciDUGME.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_schedule_32px.png"))); // NOI18N
         btnSviPolasciDUGME.setText("Danasnji polasci");
         btnSviPolasciDUGME.addActionListener(new java.awt.event.ActionListener() {
@@ -290,13 +336,17 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         panelRezervacije.add(btnSviPolasciDUGME);
         btnSviPolasciDUGME.setBounds(1200, 80, 170, 40);
 
+        jLabel2.setBackground(new java.awt.Color(34, 40, 44));
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setForeground(java.awt.Color.white);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_search_32px.png"))); // NOI18N
         jLabel2.setText("Pretraga:");
         panelRezervacije.add(jLabel2);
         jLabel2.setBounds(10, 40, 130, 40);
 
-        btnRefreshTabela.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_refresh_32px_1.png"))); // NOI18N
+        btnRefreshTabela.setBackground(new java.awt.Color(34, 40, 44));
+        btnRefreshTabela.setForeground(java.awt.Color.white);
+        btnRefreshTabela.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_refresh_32px_1.png"))); // NOI18N
         btnRefreshTabela.setText("Osvezi tabelu");
         btnRefreshTabela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -309,13 +359,15 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         getContentPane().add(panelRezervacije);
         panelRezervacije.setBounds(0, 0, 1560, 570);
 
-        panelMojeRezervacije.setBackground(new java.awt.Color(34, 40, 44));
+        panelMojeRezervacije.setBackground(new java.awt.Color(44, 44, 44));
+        panelMojeRezervacije.setForeground(new java.awt.Color(255, 255, 255));
         panelMojeRezervacije.setMinimumSize(new java.awt.Dimension(1250, 570));
         panelMojeRezervacije.setPreferredSize(new java.awt.Dimension(1250, 570));
         panelMojeRezervacije.setRequestFocusEnabled(false);
         panelMojeRezervacije.setLayout(null);
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setForeground(java.awt.Color.white);
 
         tabelMojeRezeravacije.setForeground(new java.awt.Color(0, 0, 0));
         tabelMojeRezeravacije.setModel(new javax.swing.table.DefaultTableModel(
@@ -338,12 +390,18 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         panelMojeRezervacije.add(jScrollPane1);
         jScrollPane1.setBounds(20, 160, 1510, 220);
 
+        lblNazivTabeleMojeRezervacije.setBackground(new java.awt.Color(34, 40, 44));
         lblNazivTabeleMojeRezervacije.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lblNazivTabeleMojeRezervacije.setForeground(java.awt.Color.white);
         lblNazivTabeleMojeRezervacije.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNazivTabeleMojeRezervacije.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_list_32px.png"))); // NOI18N
         lblNazivTabeleMojeRezervacije.setText("Tabela rezervacija:");
         panelMojeRezervacije.add(lblNazivTabeleMojeRezervacije);
         lblNazivTabeleMojeRezervacije.setBounds(20, 110, 1190, 40);
 
+        cmbAktivneRezervacije.setBackground(new java.awt.Color(34, 40, 44));
+        cmbAktivneRezervacije.setForeground(java.awt.Color.white);
+        cmbAktivneRezervacije.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_sand_watch_32px.png"))); // NOI18N
         cmbAktivneRezervacije.setText("Aktivne rezervacije");
         cmbAktivneRezervacije.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -351,8 +409,11 @@ public final class FormaRezervacije extends javax.swing.JFrame {
             }
         });
         panelMojeRezervacije.add(cmbAktivneRezervacije);
-        cmbAktivneRezervacije.setBounds(1150, 60, 210, 32);
+        cmbAktivneRezervacije.setBounds(1110, 60, 230, 50);
 
+        btnRealizovaneRezervacije.setBackground(new java.awt.Color(34, 40, 44));
+        btnRealizovaneRezervacije.setForeground(java.awt.Color.white);
+        btnRealizovaneRezervacije.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_checked_checkbox_30px.png"))); // NOI18N
         btnRealizovaneRezervacije.setText("Realizovane rezervacije");
         btnRealizovaneRezervacije.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -360,8 +421,11 @@ public final class FormaRezervacije extends javax.swing.JFrame {
             }
         });
         panelMojeRezervacije.add(btnRealizovaneRezervacije);
-        btnRealizovaneRezervacije.setBounds(1330, 60, 210, 32);
+        btnRealizovaneRezervacije.setBounds(1330, 60, 210, 50);
 
+        btnOtkaziRezervaciju.setBackground(new java.awt.Color(34, 40, 44));
+        btnOtkaziRezervaciju.setForeground(java.awt.Color.white);
+        btnOtkaziRezervaciju.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_waste_32px.png"))); // NOI18N
         btnOtkaziRezervaciju.setText("Oktazi rezervaciju");
         btnOtkaziRezervaciju.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -369,50 +433,90 @@ public final class FormaRezervacije extends javax.swing.JFrame {
             }
         });
         panelMojeRezervacije.add(btnOtkaziRezervaciju);
-        btnOtkaziRezervaciju.setBounds(1230, 390, 310, 32);
+        btnOtkaziRezervaciju.setBounds(1230, 390, 310, 40);
 
         getContentPane().add(panelMojeRezervacije);
         panelMojeRezervacije.setBounds(0, 0, 1560, 570);
 
-        panelKlijenta.setBackground(new java.awt.Color(34, 40, 44));
+        panelKlijenta.setBackground(new java.awt.Color(44, 44, 44));
+        panelKlijenta.setForeground(new java.awt.Color(255, 255, 255));
         panelKlijenta.setLayout(null);
 
+        lblEmailRegistracija.setBackground(new java.awt.Color(34, 40, 44));
+        lblEmailRegistracija.setForeground(java.awt.Color.white);
+        lblEmailRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_gmail_32px.png"))); // NOI18N
         lblEmailRegistracija.setText("Email:");
         panelKlijenta.add(lblEmailRegistracija);
         lblEmailRegistracija.setBounds(130, 100, 140, 30);
+
+        txtEmail.setBackground(new java.awt.Color(44, 44, 44));
+        txtEmail.setForeground(java.awt.Color.white);
         panelKlijenta.add(txtEmail);
         txtEmail.setBounds(280, 100, 218, 30);
 
+        lblImeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
+        lblImeRegistracija.setForeground(java.awt.Color.white);
+        lblImeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_account_32px.png"))); // NOI18N
         lblImeRegistracija.setText("Ime:");
         panelKlijenta.add(lblImeRegistracija);
         lblImeRegistracija.setBounds(130, 140, 140, 30);
+
+        txtIme.setBackground(new java.awt.Color(44, 44, 44));
+        txtIme.setForeground(java.awt.Color.white);
         panelKlijenta.add(txtIme);
         txtIme.setBounds(280, 140, 218, 30);
 
+        lblPrezimeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
+        lblPrezimeRegistracija.setForeground(java.awt.Color.white);
+        lblPrezimeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_account_32px.png"))); // NOI18N
         lblPrezimeRegistracija.setText("Prezime:");
         panelKlijenta.add(lblPrezimeRegistracija);
         lblPrezimeRegistracija.setBounds(130, 180, 140, 30);
+
+        txtPrezime.setBackground(new java.awt.Color(44, 44, 44));
+        txtPrezime.setForeground(java.awt.Color.white);
         panelKlijenta.add(txtPrezime);
         txtPrezime.setBounds(280, 180, 218, 30);
 
+        lblKorisnickoImeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
+        lblKorisnickoImeRegistracija.setForeground(java.awt.Color.white);
+        lblKorisnickoImeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_edit_user_32px.png"))); // NOI18N
         lblKorisnickoImeRegistracija.setText("Korisnicko ime:");
         panelKlijenta.add(lblKorisnickoImeRegistracija);
         lblKorisnickoImeRegistracija.setBounds(130, 220, 140, 30);
+
+        txtKorisnickoIme.setBackground(new java.awt.Color(44, 44, 44));
+        txtKorisnickoIme.setForeground(java.awt.Color.white);
         panelKlijenta.add(txtKorisnickoIme);
         txtKorisnickoIme.setBounds(280, 220, 218, 30);
 
+        lblLozinakRegistracija.setBackground(new java.awt.Color(34, 40, 44));
+        lblLozinakRegistracija.setForeground(java.awt.Color.white);
+        lblLozinakRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_key_32px_1.png"))); // NOI18N
         lblLozinakRegistracija.setText("Lozinka:");
         panelKlijenta.add(lblLozinakRegistracija);
         lblLozinakRegistracija.setBounds(130, 260, 140, 30);
+
+        txtPassword.setBackground(new java.awt.Color(44, 44, 44));
+        txtPassword.setForeground(java.awt.Color.white);
         panelKlijenta.add(txtPassword);
         txtPassword.setBounds(280, 260, 218, 30);
 
+        lblPotvrdaLozinkeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
+        lblPotvrdaLozinkeRegistracija.setForeground(java.awt.Color.white);
+        lblPotvrdaLozinkeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_key_32px_1.png"))); // NOI18N
         lblPotvrdaLozinkeRegistracija.setText("Potvrda loznike:");
         panelKlijenta.add(lblPotvrdaLozinkeRegistracija);
         lblPotvrdaLozinkeRegistracija.setBounds(130, 300, 140, 30);
+
+        txtPasswordPotvrda.setBackground(new java.awt.Color(44, 44, 44));
+        txtPasswordPotvrda.setForeground(java.awt.Color.white);
         panelKlijenta.add(txtPasswordPotvrda);
         txtPasswordPotvrda.setBounds(280, 300, 218, 30);
 
+        btnPromeni.setBackground(new java.awt.Color(34, 40, 44));
+        btnPromeni.setForeground(java.awt.Color.white);
+        btnPromeni.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_edit_user_32px.png"))); // NOI18N
         btnPromeni.setText("Promeni");
         btnPromeni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -420,7 +524,7 @@ public final class FormaRezervacije extends javax.swing.JFrame {
             }
         });
         panelKlijenta.add(btnPromeni);
-        btnPromeni.setBounds(280, 342, 218, 32);
+        btnPromeni.setBounds(280, 342, 218, 40);
 
         getContentPane().add(panelKlijenta);
         panelKlijenta.setBounds(0, 0, 1560, 570);
@@ -970,7 +1074,9 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         tabela.setSelectionBackground(Color.LIGHT_GRAY);
         tabela.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         tabela.getTableHeader().setOpaque(false);
-        tabela.getTableHeader().setBackground(new Color(32, 136, 203));
+        tabela.getTableHeader().setBackground(new Color(44, 44, 44));
+        tabela.setBackground(new Color(44, 44, 44));
+        tabela.setForeground(new Color(255, 255, 255));
         tabela.getTableHeader().setForeground(new Color(255, 255, 255));
         tabela.setRowHeight(25);
     }
@@ -992,4 +1098,5 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         mtr.setList(listaRezervacija);
         tabelMojeRezeravacije.setModel(mtr);
     }
+
 }

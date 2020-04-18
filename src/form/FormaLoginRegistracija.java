@@ -23,9 +23,12 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
     public FormaLoginRegistracija() {
         initComponents();
         this.setSize(1200, 600);
+        lblProblemKorisnik.setVisible(false);
         centrirajFrejm();
         panelLogin.setVisible(true);
         panelRegistracije.setVisible(false);
+        jLabel1.setVisible(false);
+        jLabel2.setVisible(true);
 
     }
 
@@ -38,12 +41,7 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelLogin = new javax.swing.JPanel();
-        lblEmailLogin = new javax.swing.JLabel();
-        txtEmailLogin = new javax.swing.JTextField();
-        lblLoznikaLogin = new javax.swing.JLabel();
-        txtPasswordLogin = new javax.swing.JPasswordField();
-        btnPrijaviSe = new javax.swing.JButton();
+        panelLevi = new javax.swing.JPanel();
         panelRegistracije = new javax.swing.JPanel();
         lblEmailRegistracija = new javax.swing.JLabel();
         lblImeRegistracija = new javax.swing.JLabel();
@@ -58,10 +56,19 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         txtPassword = new javax.swing.JPasswordField();
         txtPasswordPotvrda = new javax.swing.JPasswordField();
         btnRegistrujSe = new javax.swing.JButton();
-        btnLogin = new javax.swing.JButton();
-        btnRegistration = new javax.swing.JButton();
-        panelLevi = new javax.swing.JPanel();
-        panelDesni = new javax.swing.JPanel();
+        panelLogin = new javax.swing.JPanel();
+        lblEmailLogin = new javax.swing.JLabel();
+        txtEmailLogin = new javax.swing.JTextField();
+        lblLoznikaLogin = new javax.swing.JLabel();
+        txtPasswordLogin = new javax.swing.JPasswordField();
+        btnPrijaviSe = new javax.swing.JButton();
+        lblProblemKorisnik = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Log in / Sing in");
@@ -71,169 +78,237 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        panelLogin.setBackground(new java.awt.Color(34, 40, 44));
-        panelLogin.setLayout(null);
+        panelLevi.setBackground(new java.awt.Color(44, 44, 44));
+        panelLevi.setLayout(null);
 
-        lblEmailLogin.setBackground(new java.awt.Color(102, 102, 102));
-        lblEmailLogin.setForeground(new java.awt.Color(255, 255, 255));
-        lblEmailLogin.setText("Email:");
-        panelLogin.add(lblEmailLogin);
-        lblEmailLogin.setBounds(30, 30, 140, 30);
-
-        txtEmailLogin.setBackground(new java.awt.Color(102, 102, 102));
-        txtEmailLogin.setForeground(new java.awt.Color(255, 255, 255));
-        panelLogin.add(txtEmailLogin);
-        txtEmailLogin.setBounds(190, 30, 220, 30);
-
-        lblLoznikaLogin.setBackground(new java.awt.Color(102, 102, 102));
-        lblLoznikaLogin.setForeground(new java.awt.Color(255, 255, 255));
-        lblLoznikaLogin.setText("Lozinka:");
-        panelLogin.add(lblLoznikaLogin);
-        lblLoznikaLogin.setBounds(30, 70, 140, 30);
-
-        txtPasswordLogin.setBackground(new java.awt.Color(102, 102, 102));
-        txtPasswordLogin.setForeground(new java.awt.Color(255, 255, 255));
-        panelLogin.add(txtPasswordLogin);
-        txtPasswordLogin.setBounds(190, 70, 220, 30);
-
-        btnPrijaviSe.setBackground(new java.awt.Color(102, 102, 102));
-        btnPrijaviSe.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrijaviSe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_user_32px_1.png"))); // NOI18N
-        btnPrijaviSe.setText("Log in");
-        btnPrijaviSe.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnPrijaviSe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrijaviSeActionPerformed(evt);
-            }
-        });
-        panelLogin.add(btnPrijaviSe);
-        btnPrijaviSe.setBounds(190, 110, 218, 30);
-
-        getContentPane().add(panelLogin);
-        panelLogin.setBounds(270, 90, 420, 160);
-
-        panelRegistracije.setBackground(new java.awt.Color(34, 40, 44));
+        panelRegistracije.setBackground(new java.awt.Color(44, 44, 44));
+        panelRegistracije.setOpaque(false);
         panelRegistracije.setLayout(null);
 
         lblEmailRegistracija.setBackground(new java.awt.Color(102, 102, 102));
-        lblEmailRegistracija.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmailRegistracija.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        lblEmailRegistracija.setForeground(new java.awt.Color(0, 0, 51));
+        lblEmailRegistracija.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblEmailRegistracija.setText("Email:");
         panelRegistracije.add(lblEmailRegistracija);
-        lblEmailRegistracija.setBounds(30, 30, 140, 30);
+        lblEmailRegistracija.setBounds(10, 0, 170, 30);
 
         lblImeRegistracija.setBackground(new java.awt.Color(102, 102, 102));
-        lblImeRegistracija.setForeground(new java.awt.Color(255, 255, 255));
+        lblImeRegistracija.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        lblImeRegistracija.setForeground(new java.awt.Color(0, 0, 51));
+        lblImeRegistracija.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblImeRegistracija.setText("Ime:");
         panelRegistracije.add(lblImeRegistracija);
-        lblImeRegistracija.setBounds(30, 70, 140, 30);
+        lblImeRegistracija.setBounds(10, 40, 170, 30);
 
         lblPrezimeRegistracija.setBackground(new java.awt.Color(102, 102, 102));
-        lblPrezimeRegistracija.setForeground(new java.awt.Color(255, 255, 255));
+        lblPrezimeRegistracija.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        lblPrezimeRegistracija.setForeground(new java.awt.Color(0, 0, 51));
+        lblPrezimeRegistracija.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblPrezimeRegistracija.setText("Prezime:");
         panelRegistracije.add(lblPrezimeRegistracija);
-        lblPrezimeRegistracija.setBounds(30, 110, 140, 30);
+        lblPrezimeRegistracija.setBounds(10, 80, 170, 30);
 
         lblKorisnickoImeRegistracija.setBackground(new java.awt.Color(102, 102, 102));
-        lblKorisnickoImeRegistracija.setForeground(new java.awt.Color(255, 255, 255));
+        lblKorisnickoImeRegistracija.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        lblKorisnickoImeRegistracija.setForeground(new java.awt.Color(0, 0, 51));
+        lblKorisnickoImeRegistracija.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblKorisnickoImeRegistracija.setText("Korisnicko ime:");
         panelRegistracije.add(lblKorisnickoImeRegistracija);
-        lblKorisnickoImeRegistracija.setBounds(30, 150, 140, 30);
+        lblKorisnickoImeRegistracija.setBounds(10, 120, 170, 30);
 
         lblLozinakRegistracija.setBackground(new java.awt.Color(102, 102, 102));
-        lblLozinakRegistracija.setForeground(new java.awt.Color(255, 255, 255));
+        lblLozinakRegistracija.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        lblLozinakRegistracija.setForeground(new java.awt.Color(0, 0, 51));
+        lblLozinakRegistracija.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblLozinakRegistracija.setText("Lozinka:");
         panelRegistracije.add(lblLozinakRegistracija);
-        lblLozinakRegistracija.setBounds(30, 190, 140, 30);
+        lblLozinakRegistracija.setBounds(10, 160, 170, 30);
 
         lblPotvrdaLozinkeRegistracija.setBackground(new java.awt.Color(102, 102, 102));
-        lblPotvrdaLozinkeRegistracija.setForeground(new java.awt.Color(255, 255, 255));
+        lblPotvrdaLozinkeRegistracija.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        lblPotvrdaLozinkeRegistracija.setForeground(new java.awt.Color(0, 0, 51));
+        lblPotvrdaLozinkeRegistracija.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblPotvrdaLozinkeRegistracija.setText("Potvrda loznike:");
         panelRegistracije.add(lblPotvrdaLozinkeRegistracija);
-        lblPotvrdaLozinkeRegistracija.setBounds(30, 230, 140, 30);
+        lblPotvrdaLozinkeRegistracija.setBounds(10, 200, 170, 30);
 
         txtEmail.setBackground(new java.awt.Color(102, 102, 102));
-        txtEmail.setForeground(new java.awt.Color(255, 255, 255));
+        txtEmail.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(0, 0, 51));
+        txtEmail.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtEmail.setOpaque(false);
         panelRegistracije.add(txtEmail);
-        txtEmail.setBounds(190, 30, 220, 30);
+        txtEmail.setBounds(200, 0, 230, 30);
 
         txtIme.setBackground(new java.awt.Color(102, 102, 102));
-        txtIme.setForeground(new java.awt.Color(255, 255, 255));
-        txtIme.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtImeActionPerformed(evt);
-            }
-        });
+        txtIme.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        txtIme.setForeground(new java.awt.Color(0, 0, 51));
+        txtIme.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtIme.setOpaque(false);
         panelRegistracije.add(txtIme);
-        txtIme.setBounds(190, 70, 220, 30);
+        txtIme.setBounds(200, 40, 230, 30);
 
         txtPrezime.setBackground(new java.awt.Color(102, 102, 102));
-        txtPrezime.setForeground(new java.awt.Color(255, 255, 255));
+        txtPrezime.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        txtPrezime.setForeground(new java.awt.Color(0, 0, 51));
+        txtPrezime.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtPrezime.setOpaque(false);
         panelRegistracije.add(txtPrezime);
-        txtPrezime.setBounds(190, 110, 218, 30);
+        txtPrezime.setBounds(200, 80, 230, 30);
 
         txtKorisnickoIme.setBackground(new java.awt.Color(102, 102, 102));
-        txtKorisnickoIme.setForeground(new java.awt.Color(255, 255, 255));
+        txtKorisnickoIme.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        txtKorisnickoIme.setForeground(new java.awt.Color(0, 0, 51));
+        txtKorisnickoIme.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtKorisnickoIme.setOpaque(false);
         panelRegistracije.add(txtKorisnickoIme);
-        txtKorisnickoIme.setBounds(190, 150, 218, 30);
+        txtKorisnickoIme.setBounds(200, 120, 230, 30);
 
         txtPassword.setBackground(new java.awt.Color(102, 102, 102));
-        txtPassword.setForeground(new java.awt.Color(255, 255, 255));
+        txtPassword.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(0, 0, 51));
+        txtPassword.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtPassword.setOpaque(false);
         panelRegistracije.add(txtPassword);
-        txtPassword.setBounds(190, 190, 218, 30);
+        txtPassword.setBounds(200, 160, 230, 30);
 
         txtPasswordPotvrda.setBackground(new java.awt.Color(102, 102, 102));
-        txtPasswordPotvrda.setForeground(new java.awt.Color(255, 255, 255));
+        txtPasswordPotvrda.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        txtPasswordPotvrda.setForeground(new java.awt.Color(0, 0, 51));
+        txtPasswordPotvrda.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtPasswordPotvrda.setOpaque(false);
         panelRegistracije.add(txtPasswordPotvrda);
-        txtPasswordPotvrda.setBounds(190, 230, 218, 30);
+        txtPasswordPotvrda.setBounds(200, 200, 230, 30);
 
         btnRegistrujSe.setBackground(new java.awt.Color(102, 102, 102));
-        btnRegistrujSe.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistrujSe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_add_user_male_32px.png"))); // NOI18N
+        btnRegistrujSe.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        btnRegistrujSe.setForeground(new java.awt.Color(0, 0, 51));
+        btnRegistrujSe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_add_user_male_32.png"))); // NOI18N
         btnRegistrujSe.setText("Registruj se");
+        btnRegistrujSe.setOpaque(false);
         btnRegistrujSe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrujSeActionPerformed(evt);
             }
         });
         panelRegistracije.add(btnRegistrujSe);
-        btnRegistrujSe.setBounds(190, 270, 218, 48);
+        btnRegistrujSe.setBounds(200, 240, 230, 50);
 
-        getContentPane().add(panelRegistracije);
-        panelRegistracije.setBounds(270, 90, 420, 350);
+        panelLevi.add(panelRegistracije);
+        panelRegistracije.setBounds(330, 0, 450, 300);
 
-        btnLogin.setBackground(new java.awt.Color(102, 102, 102));
-        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
-        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_user_male_30px.png"))); // NOI18N
-        btnLogin.setText("Log in");
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+        panelLogin.setBackground(new java.awt.Color(34, 40, 44));
+        panelLogin.setOpaque(false);
+        panelLogin.setLayout(null);
+
+        lblEmailLogin.setBackground(new java.awt.Color(102, 102, 102));
+        lblEmailLogin.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        lblEmailLogin.setForeground(new java.awt.Color(0, 0, 51));
+        lblEmailLogin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEmailLogin.setText("Email:");
+        panelLogin.add(lblEmailLogin);
+        lblEmailLogin.setBounds(10, 0, 170, 30);
+
+        txtEmailLogin.setBackground(new java.awt.Color(102, 102, 102));
+        txtEmailLogin.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        txtEmailLogin.setForeground(new java.awt.Color(0, 0, 51));
+        txtEmailLogin.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtEmailLogin.setOpaque(false);
+        panelLogin.add(txtEmailLogin);
+        txtEmailLogin.setBounds(200, 0, 230, 30);
+
+        lblLoznikaLogin.setBackground(new java.awt.Color(102, 102, 102));
+        lblLoznikaLogin.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        lblLoznikaLogin.setForeground(new java.awt.Color(0, 0, 51));
+        lblLoznikaLogin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblLoznikaLogin.setText("Lozinka:");
+        panelLogin.add(lblLoznikaLogin);
+        lblLoznikaLogin.setBounds(10, 40, 170, 30);
+
+        txtPasswordLogin.setBackground(new java.awt.Color(102, 102, 102));
+        txtPasswordLogin.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        txtPasswordLogin.setForeground(new java.awt.Color(0, 0, 51));
+        txtPasswordLogin.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtPasswordLogin.setOpaque(false);
+        panelLogin.add(txtPasswordLogin);
+        txtPasswordLogin.setBounds(200, 40, 230, 30);
+
+        btnPrijaviSe.setBackground(new java.awt.Color(102, 102, 102));
+        btnPrijaviSe.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        btnPrijaviSe.setForeground(new java.awt.Color(0, 0, 51));
+        btnPrijaviSe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_user_32.png"))); // NOI18N
+        btnPrijaviSe.setText("Uloguj se");
+        btnPrijaviSe.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnPrijaviSe.setOpaque(false);
+        btnPrijaviSe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
+                btnPrijaviSeActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLogin);
-        btnLogin.setBounds(420, 10, 130, 60);
+        panelLogin.add(btnPrijaviSe);
+        btnPrijaviSe.setBounds(200, 80, 230, 50);
 
-        btnRegistration.setBackground(new java.awt.Color(102, 102, 102));
-        btnRegistration.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistration.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_add_user_male_30px.png"))); // NOI18N
-        btnRegistration.setText("Sing in");
-        btnRegistration.setToolTipText("");
-        btnRegistration.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrationActionPerformed(evt);
+        panelLevi.add(panelLogin);
+        panelLogin.setBounds(330, 0, 450, 150);
+
+        lblProblemKorisnik.setFont(new java.awt.Font("Arial Unicode MS", 1, 14)); // NOI18N
+        lblProblemKorisnik.setForeground(new java.awt.Color(0, 0, 51));
+        lblProblemKorisnik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_mandatory_32.png"))); // NOI18N
+        lblProblemKorisnik.setText("Korisnik sa zadatom email adresom vec postoji!");
+        panelLevi.add(lblProblemKorisnik);
+        lblProblemKorisnik.setBounds(790, 0, 400, 32);
+
+        jLabel6.setFont(new java.awt.Font("Arial Unicode MS", 2, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel6.setText("|");
+        panelLevi.add(jLabel6);
+        jLabel6.setBounds(110, 0, 20, 30);
+
+        jLabel4.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_user_16.png"))); // NOI18N
+        jLabel4.setText("Uloguj se");
+        panelLevi.add(jLabel4);
+        jLabel4.setBounds(0, 0, 110, 30);
+
+        jLabel5.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_add_user_male_16.png"))); // NOI18N
+        jLabel5.setText("Registruj se");
+        panelLevi.add(jLabel5);
+        jLabel5.setBounds(130, 0, 140, 30);
+
+        jLabel1.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_toggle_on_80px.png"))); // NOI18N
+        jLabel1.setPreferredSize(new java.awt.Dimension(150, 100));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
             }
         });
-        getContentPane().add(btnRegistration);
-        btnRegistration.setBounds(540, 10, 150, 60);
+        panelLevi.add(jLabel1);
+        jLabel1.setBounds(0, 30, 90, 60);
 
-        panelLevi.setBackground(new java.awt.Color(21, 25, 28));
+        jLabel2.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_toggle_off_80px.png"))); // NOI18N
+        jLabel2.setPreferredSize(new java.awt.Dimension(150, 100));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        panelLevi.add(jLabel2);
+        jLabel2.setBounds(0, 30, 90, 60);
+
+        jLabel3.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/photo-1568475199119-34ce4f1adaf8.jpg"))); // NOI18N
+        panelLevi.add(jLabel3);
+        jLabel3.setBounds(-790, 0, 2000, 600);
+
         getContentPane().add(panelLevi);
         panelLevi.setBounds(0, 0, 1200, 600);
-
-        panelDesni.setBackground(new java.awt.Color(34, 40, 44));
-        getContentPane().add(panelDesni);
-        panelDesni.setBounds(500, 0, 700, 600);
-        panelDesni.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -250,6 +325,7 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         try {
             klijent = kontroler.Kontroler.getInstance().UlogujSe(k);
             JOptionPane.showMessageDialog(this, "Korisnik: " + klijent.getIme() + " " + klijent.getPrezime() + ".\nUspesno ste se prijavili!");
+
             prikaziGlavnuFormu(klijent);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.toString());
@@ -257,6 +333,7 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPrijaviSeActionPerformed
 
     private void btnRegistrujSeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrujSeActionPerformed
+        lblProblemKorisnik.setVisible(false);
         char[] niz = txtPassword.getPassword();
         String lozinka = String.copyValueOf(niz);
         char[] niz2 = txtPasswordPotvrda.getPassword();
@@ -280,30 +357,27 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         Klijent klijent = new Klijent(-1, korisnickoIme, lozinka, ime, prezime, email);
         try {
             Kontroler.getInstance().RegistrujSe(klijent);
-            btnLoginActionPerformed(evt);
+            lblLoginChange();
             txtIme.setText("");
             txtPrezime.setText("");
             txtEmail.setText("");
             txtKorisnickoIme.setText("");
         } catch (Exception ex) {
+            lblProblemKorisnik.setVisible(true);
             JOptionPane.showMessageDialog(this, ex.toString());
             txtEmail.setText("");
         }
     }//GEN-LAST:event_btnRegistrujSeActionPerformed
 
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        panelLogin.setVisible(true);
-        panelRegistracije.setVisible(false);
-    }//GEN-LAST:event_btnLoginActionPerformed
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        lblLoginChange();
 
-    private void btnRegistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrationActionPerformed
-        panelLogin.setVisible(false);
-        panelRegistracije.setVisible(true);
-    }//GEN-LAST:event_btnRegistrationActionPerformed
+    }//GEN-LAST:event_jLabel1MouseClicked
 
-    private void txtImeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtImeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtImeActionPerformed
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        lblRegistrationChange();
+
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -341,10 +415,14 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnPrijaviSe;
-    private javax.swing.JButton btnRegistration;
     private javax.swing.JButton btnRegistrujSe;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel lblEmailLogin;
     private javax.swing.JLabel lblEmailRegistracija;
     private javax.swing.JLabel lblImeRegistracija;
@@ -353,7 +431,7 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
     private javax.swing.JLabel lblLoznikaLogin;
     private javax.swing.JLabel lblPotvrdaLozinkeRegistracija;
     private javax.swing.JLabel lblPrezimeRegistracija;
-    private javax.swing.JPanel panelDesni;
+    private javax.swing.JLabel lblProblemKorisnik;
     private javax.swing.JPanel panelLevi;
     private javax.swing.JPanel panelLogin;
     private javax.swing.JPanel panelRegistracije;
@@ -379,4 +457,19 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         fr.setVisible(true);
         this.setVisible(false);
     }
+
+    private void lblLoginChange() {
+        jLabel1.setVisible(false);
+        jLabel2.setVisible(true);
+        panelLogin.setVisible(true);
+        panelRegistracije.setVisible(false);
+    }
+
+    private void lblRegistrationChange() {
+        jLabel1.setVisible(true);
+        jLabel2.setVisible(false);
+        panelLogin.setVisible(false);
+        panelRegistracije.setVisible(true);
+    }
+
 }
