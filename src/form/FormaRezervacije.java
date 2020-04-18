@@ -179,7 +179,7 @@ public final class FormaRezervacije extends javax.swing.JFrame {
 
         btnOdjaviSe.setBackground(new java.awt.Color(34, 40, 44));
         btnOdjaviSe.setForeground(java.awt.Color.white);
-        btnOdjaviSe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_logout_rounded_down_32px.png"))); // NOI18N
+        btnOdjaviSe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_logout_rounded_down_32px.png"))); // NOI18N
         btnOdjaviSe.setText("Odjavi se");
         btnOdjaviSe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -326,7 +326,7 @@ public final class FormaRezervacije extends javax.swing.JFrame {
 
         btnSviPolasciDUGME.setBackground(new java.awt.Color(34, 40, 44));
         btnSviPolasciDUGME.setForeground(java.awt.Color.white);
-        btnSviPolasciDUGME.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_schedule_32px.png"))); // NOI18N
+        btnSviPolasciDUGME.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_schedule_32px.png"))); // NOI18N
         btnSviPolasciDUGME.setText("Danasnji polasci");
         btnSviPolasciDUGME.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -339,7 +339,7 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(34, 40, 44));
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setForeground(java.awt.Color.white);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/icons8_search_32px.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_search_32px.png"))); // NOI18N
         jLabel2.setText("Pretraga:");
         panelRezervacije.add(jLabel2);
         jLabel2.setBounds(10, 40, 130, 40);

@@ -140,7 +140,7 @@
           <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/slike/icons8_logout_rounded_down_32px.png"/>
+          <Image iconType="3" name="/icons/icons8_logout_rounded_down_32px.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Odjavi se"/>
       </Properties>
@@ -507,7 +507,7 @@
               <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/slike/icons8_schedule_32px.png"/>
+              <Image iconType="3" name="/icons/icons8_schedule_32px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Danasnji polasci"/>
           </Properties>
@@ -532,7 +532,7 @@
               <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/slike/icons8_search_32px.png"/>
+              <Image iconType="3" name="/icons/icons8_search_32px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Pretraga:"/>
           </Properties>
